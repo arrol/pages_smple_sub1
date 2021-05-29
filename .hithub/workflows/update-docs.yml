@@ -1,0 +1,32 @@
+name: update docs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+  pull_request:
+
+env:
+  DOKU_REPO: 'https://github.com/arrol/pages_smple.git'
+  NODE_VERSION: '10.x'
+  PYTHON_VERSION: '3.9'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Docu Repo
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.DOKU_REPO }}
+          ref: 'main'
+          submodules: true
+      - name: Checkout Submodules
+        run: git submodule update --remote --recursive
+      - name: Commit update
+          run: |
+            git config --global user.name 'Git bot'
+            git config --global user.email 'bot@noreply.github.com'
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.DOKU_REPO }}
+            git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
