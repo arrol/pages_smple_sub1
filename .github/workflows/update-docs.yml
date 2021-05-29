@@ -29,6 +29,6 @@ jobs:
         run: |
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.DOKU_REPO }}
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/${{ env.DOKU_REPO }}
           git commit -am "Auto updated submodule references" || echo "No changes to commit"
           git push
