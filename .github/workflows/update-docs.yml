@@ -11,8 +11,6 @@ on:
 
 env:
   DOKU_REPO: 'arrol/pages_smple'
-  NODE_VERSION: '10.x'
-  PYTHON_VERSION: '3.9'
 jobs:
   deploy:
     runs-on: ubuntu-latest
