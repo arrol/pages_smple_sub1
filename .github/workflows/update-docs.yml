@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  DOKU_REPO: 'https://github.com/arrol/pages_smple.git'
+  DOKU_REPO: 'arrol/pages_smple'
   NODE_VERSION: '10.x'
   PYTHON_VERSION: '3.9'
 jobs:
